@@ -145,7 +145,7 @@ public class SuperHeroDaoDBImpl implements SuperHeroDao{
         return personList;
     }
  private List<Sighting> findSightingForSuperPerson(SuperHero superPerson) {
-     
+     //check this 
  String SQL_SELECT_SIGHTING_BY_ID = "select * from sighting where sighting_id = ?";
 
         return jdbc.query(SQL_SELECT_SIGHTING_BY_ID,new SightingMapper(), superPerson.getSightings());
