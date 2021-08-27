@@ -113,5 +113,12 @@ public class SightingController {
          
      }
     
+     
+         @GetMapping("sightingDetail")
+    public String courseDetail(Integer id, Model model) {
+        Sighting sighting = sightingDao.getSightingById(id);
+        model.addAttribute("sighting", sighting);
+        return "sightingDetail";
+    }
 }
 

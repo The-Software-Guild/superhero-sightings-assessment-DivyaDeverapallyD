@@ -96,6 +96,7 @@ public class LocationController {
          location.setCity(lCity);
          location.setStreet(lStreet);
          location.setZip(Integer.parseInt(lZip));
+         location.setLocationId(Integer.parseInt(rq.getParameter("id")));
          location.setLongitude(Double.parseDouble(longitude));
          location.setLatitude(Double.parseDouble(latitude));
          location.setDescription(description);

@@ -98,6 +98,7 @@
                                 <th>Name</th>
                                 <th>Power</th>
                                 <th>Description</th>
+                                  <th>Details</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -108,6 +109,7 @@
                                 <td th:text="${hero.name}">Teacher First Name</td>
                                 <td th:text="${hero.power}">Teacher Last Name</td>
                                 <td th:text="${hero.description}">Teacher Specialty</td>
+                                  <td><a href="#" th:href="@{/heroDetails(id=${hero.superHeroId})}">Details</a></td>
                                <td><a href="#" th:href="@{/editsuperhero(id=${hero.superHeroId})}">Edit</a></td>
                                <td><a href="#" th:href="@{/deleteHero(id=${hero.superHeroId})}">Delete</a></td>
                             </tr>

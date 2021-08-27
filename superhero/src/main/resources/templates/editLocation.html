@@ -121,7 +121,7 @@ and open the template in the editor.
                                        id="latitude" class="form-control"  th:value="${location.latitude}" required/>
                             </div>
                         </div>
-       
+       <input type="hidden" name="id" th:value="${location.locationId}"/>
                         <button type="submit" class="btn btn-primary">update Location</button>
                          
                          

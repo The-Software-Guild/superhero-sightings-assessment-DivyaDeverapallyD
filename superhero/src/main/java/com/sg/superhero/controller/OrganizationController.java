@@ -9,6 +9,7 @@ import com.sg.superhero.dao.LocationDao;
 import com.sg.superhero.dao.OrganizationDao;
 import com.sg.superhero.model.Location;
 import com.sg.superhero.model.Organization;
+import com.sg.superhero.model.Sighting;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,7 @@ public class OrganizationController {
         org.setName(name);
         org.setPhone(phone);
         org.setDesciption(desc);
+        org.setOrganizationId(Integer.parseInt(rq.getParameter("id")));
 
         Location location = locationDao.getLocationById(Integer.parseInt(rq.getParameter("locationId")));
         org.setLocation(location);
@@ -95,4 +97,11 @@ public class OrganizationController {
            return "redirect:/organization";
          
      }
+     
+             @GetMapping("organizationDetails")
+    public String organizationDetail(Integer id, Model model) {
+        Organization org = orgDao.getOrganizationById(id);
+        model.addAttribute("org", org);
+        return "organizationDetails";
+    }
 }

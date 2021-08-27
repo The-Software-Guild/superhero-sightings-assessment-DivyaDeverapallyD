@@ -100,6 +100,7 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Description</th>
+                                 <th>Details</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -110,6 +111,7 @@
                                 <td th:text="${org.name}">Teacher First Name</td>
                                 <td th:text="${org.phone}">Teacher Last Name</td>
                                 <td th:text="${org.desciption}">Teacher Specialty</td>
+                                  <td><a href="#" th:href="@{/organizationDetails(id=${org.organizationId})}">Details</a></td>
                                <td><a href="#" th:href="@{/editOrgnization(id=${org.organizationId})}">Edit</a></td>
                               <td><a href="#" th:href="@{/deleteOrgnization(id=${org.organizationId})}">Delete</a></td>
                             </tr>

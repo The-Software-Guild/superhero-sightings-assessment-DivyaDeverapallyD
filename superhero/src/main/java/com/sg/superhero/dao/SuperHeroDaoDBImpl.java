@@ -70,7 +70,7 @@ public class SuperHeroDaoDBImpl implements SuperHeroDao{
     @Transactional
     public void deleteSuperHero(int heroId) {
          jdbc.update("delete from super_hero_organization where super_hero_id = ?", heroId);
-        jdbc.update("delete from super_hero_organization where super_hero_id = ?", heroId);
+        jdbc.update("delete from super_hero_sighting where super_hero_id = ?", heroId);
         jdbc.update("delete from super_hero where super_hero_id = ?", heroId);
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

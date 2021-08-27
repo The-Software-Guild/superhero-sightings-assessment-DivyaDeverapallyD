@@ -36,66 +36,6 @@
         </div>
     
     
-       <div class="row m-4 border border-dark">
-                <div class="col-3 text-center m-3">
-                    <span class="h3">Add Sighting</span>
-                </div>
-                <div class="col-7 text-center m-3">
-                  
-                    <form action="addSighting" method="POST">
-                        <div class="form-group row">
-                            <label for="date" class="col-3 col-form-label">
-                                 Date</label>
-                            <div class="col-9">
-                                <input type="date" name="date" 
-                                       id="date" class="form-control"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="power" class="col-3 col-form-label">
-                                Description</label>
-                            <div class="col-9">
-                                <input type="text" name="description" 
-                                       id="description" class="form-control"/>
-                            </div>
-                        </div>
-                  <div class="form-group row">
-                            <label for="location" class="col-3 col-form-label">
-                                Location</label>
-                            <div class="col-9">
-                                <select id="location" name="locationId" class="form-control" >
-                                    <option th:each="location:${locationList}" 
-                                            th:value="${location.locationId}" 
-                                            th:text="${location.locationName}">
-                                        Location Name</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        
-               <div class="form-group row">
-                            <label for="organization" class="col-3 col-form-label">
-                                Hero</label>
-                            <div class="col-9">
-                                <select multiple id="hero" name="superHeroId" 
-                                        class="form-control" >
-                                    <option th:each="hero : ${heroList}" 
-                                            th:value="${hero.superHeroId}" 
-                                            th:text="${hero.name}">
-                                        Hero</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Sighting</button>
-                    </form>
-                </div>
-            </div>
-    
-    
-    
-    
-    
-    
       <div class="row m-4 border border-dark">
                 <div class="col text-center m-3">
                     <table class="table table-striped">
@@ -105,7 +45,7 @@
                     <th width="10%">Description </th>
                     <th width="10%">Location</th>
                     <th width="10%">watched</th>
-                   <th width="10%">Details</th>
+                   
                      <th width="5%"></th>
                     <th width="5%"></th>
                             </tr>
@@ -116,12 +56,11 @@
                                 <td th:text="${sighting.description}">Teacher First Name</td>
                                 <td th:text="${sighting.location.locationName}">Teacher Last Name</td>
                                  <td>
-                             <span th:each="hero : ${sighting.superPerson}">
-                        <span th:text="${hero.name + ' ' + hero.power}">
-                          </span><br/>
-                    </span>
+                            <forEach var="currentPeople" items="${sighting.superPerson}">
+                                <c:out value="${currentPeople.name}"/>
+
+                            </forEach>
                         </td>
-                        <td> <a href="#" th:href="@{/sightingDetail(id=${sighting.sightingId})}">Details</a></td>
                               <td><a href="#" th:href="@{/editSighting(id=${sighting.sightingId})}">Edit</a></td>
                                <td><a href="#" th:href="@{/deleteSighting(id=${sighting.sightingId})}">Delete</a></td>
                             </tr>
@@ -130,9 +69,41 @@
                 </div>
             </div>
     
-    
-    
-    
+     <div class="row m-4 border border-dark">
+                <div class="col-6 text-right"><strong>ID</strong></div>
+                <div class="col-6 text-left">
+                    <span th:text="${hero.superHeroId}">display id</span>
+                </div>
+                
+                <div class="col-6 text-right"><strong>Name</strong></div>
+                <div class="col-6 text-left">
+                    <span th:text="${hero.name}">display name</span>
+                </div>
+                                <div class="col-6 text-right"><strong>Power</strong></div>
+                <div class="col-6 text-left">
+                    <span th:text="${hero.power}">display phone</span>
+                </div>
+                <div class="col-6 text-right"><strong>Description</strong></div>
+                <div class="col-6 text-left">
+                    <span th:text="${hero.description}">display description</span>
+                </div>
+               
+                <div class="col-6 text-right"><strong>Sightings</strong></div>
+                <div class="col-6 text-left">
+                    <span th:each="sighting : ${hero.sightings}">
+                        <span th:text="${sighting.date + ' ' + sighting.description}">
+                            display sightings</span><br/>
+                    </span>
+                </div>
+                
+                 <div class="col-6 text-right"><strong>Organizations</strong></div>
+                <div class="col-6 text-left">
+                    <span th:each="org : ${hero.organizations}">
+                        <span th:text="${org.name + ' ' + org.phone}">
+                            display sightings</span><br/>
+                    </span>
+                </div>
+            </div>
     
     
     

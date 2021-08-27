@@ -116,6 +116,7 @@ superHeroDao.addSuperHero(sp);
         sp.setSuperHeroSide(Boolean.parseBoolean("true"));
         sp.setDescription(rq.getParameter("description"));
         sp.setOrganizations(organizationList);
+        sp.setSuperHeroId(Integer.parseInt(rq.getParameter("id")));
 superHeroDao.updateSuperHero(sp);
         return "redirect:/superheros";
     }
@@ -126,5 +127,11 @@ superHeroDao.updateSuperHero(sp);
         return "redirect:/superheros";
     }
 
+        @GetMapping("heroDetails")
+    public String courseDetail(Integer id, Model model) {
+        SuperHero hero = superHeroDao.getSuperHeroById(id);
+        model.addAttribute("hero", hero);
+        return "heroDetails";
+    }
 
 }

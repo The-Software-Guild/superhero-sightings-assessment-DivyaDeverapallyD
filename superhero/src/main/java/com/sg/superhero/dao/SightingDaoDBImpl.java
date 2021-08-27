@@ -66,9 +66,7 @@ public class SightingDaoDBImpl implements SightingDao{
                 sighting.getDescription(),
                 sighting.getLocation().getLocationId(),
                 sighting.getSightingId());
-        //   jdbcTemplate.update(SQL_DELETE_LOCATION_FROM_SIGHTING, sighting.getLocation().getLocationId());
-        jdbcTemplate.update(
-"delete from super_hero_sighting where sighting_id = ?", sighting.getSightingId());
+        jdbcTemplate.update("delete from super_hero_sighting where sighting_id = ?", sighting.getSightingId());
         insertSupePersonForSighting(sighting);
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
